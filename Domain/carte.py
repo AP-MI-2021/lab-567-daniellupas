@@ -8,14 +8,10 @@ def creeazaCarte(id, titlu, gen, pret, tip_reducere):
     :param tip_reducere: string
     :return: un dictionar ce creeaza o vanzare
     '''
-    return  {
 
-        "id": id,
-        "titlu_carte": titlu,
-        "gen_carte": gen,
-        "pret": pret,
-        "tip_reducere": tip_reducere
-    }
+    list = [id,titlu,gen,pret,tip_reducere]
+
+    return list
 
 def getid(carte):
     '''
@@ -23,23 +19,23 @@ def getid(carte):
     :param carte: dictionar ce contine o carte
     :return: id-ul cartii
     '''
-    return carte["id"]
+    return carte[0]
 
 def getTitlu_carte(carte):
 
-    return carte["titlu_carte"]
+    return carte[1]
 
 def getGen_carte(carte):
 
-    return carte["gen_carte"]
+    return carte[2]
 
 def getPret(carte):
 
-    return carte["pret"]
+    return carte[3]
 
 def getTip_reducere(carte):
 
-    return carte["tip_reducere"]
+    return carte[4]
 
 def toString(carte):
     return "id: {}, Titlu:{}, Gen:{}, Pret:{}, Tip-Reducere:{}".format(
