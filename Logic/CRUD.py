@@ -12,6 +12,8 @@ def adaugaCarte(id, titlu, gen, pret, tip_reducere, lista):
     :param lista: returnam o lista de carti
     :return: lista care contine si elemente noi si elemente vechi
     '''
+    if getById(id, lista) is not None:
+        raise ValueError("id-ul exista deja!")
 
     carte = creeazaCarte(id, titlu, gen, pret, tip_reducere)
     return lista + [carte]
@@ -38,6 +40,9 @@ def stergeCarte(id, lista):
     :param lista:
     :return: o lista de carti
     '''
+    if getById(id, lista) is None:
+        raise ValueError("Cartea pe care doresti sa o stergi nu exista!")
+
     return [carte for carte in lista if getid(carte) != id]
 
 
@@ -51,6 +56,9 @@ def modificaCarte(id, titlu, gen, pret, tip_reducere, lista):
     :param tip_reducere: string
     :return:
     '''
+
+    if getById(id,lista) is None:
+        raise ValueError("Cartea pe care doresti sa o modifici nu exista")
     listaNoua = []
 
     for carte in lista:

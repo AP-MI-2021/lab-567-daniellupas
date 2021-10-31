@@ -46,3 +46,6 @@ def toString(carte):
         getTip_reducere(carte)
     
     )
+
+def get_str(carte):
+    return f'Cartea cu id-ul  {getid(carte)}, cu titlul {getTitlu_carte(carte)}, genul {getGen_carte(carte)}, pretul: {getPret(carte)} , tipul reducerii: {getTip_reducere(carte)}.'

@@ -33,6 +33,42 @@ def AplicareDiscount(lista):
     return listaNoua
 
 
+def ModificareGen(lista, titlu , gen):
+    listaNoua = []
 
+
+    for carte in lista:
+        if getTitlu_carte(carte) == titlu:
+            carteNoua = creeazaCarte(getid(carte),
+                                     getTitlu_carte(carte),
+                                     gen,
+                                     getPret(carte),
+                                     getTip_reducere(carte)
+                                     )
+
+            listaNoua.append(carteNoua)
+        else:
+            listaNoua.append(carte)
+
+    return listaNoua
+
+
+def PretMinimPeGen(lista):
+
+    listaNoua=[]
+
+    rezultat = {}
+
+    for carte in lista:
+        gen = getGen_carte(carte)
+        pret = getPret(carte)
+
+        if gen not in rezultat:
+            rezultat[gen] = carte
+        else:
+            if pret < getPret(rezultat[gen]):
+                rezultat[gen]= carte
+
+    return  rezultat
 
 
