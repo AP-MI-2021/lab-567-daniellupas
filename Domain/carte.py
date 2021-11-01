@@ -2,14 +2,14 @@ def creeazaCarte(id, titlu, gen, pret, tip_reducere):
     '''
     creeaza un dictionar ce reprezinta o carte
     :param id: string
-    :param titlu_cate: string
-    :param gen_carte: string
+    :param titlu: string
+    :param gen: string
     :param pret: int
     :param tip_reducere: string
     :return: un dictionar ce creeaza o vanzare
     '''
 
-    list = [id,titlu,gen,pret,tip_reducere]
+    list = [id, titlu, gen, pret, tip_reducere]
 
     return list
 
