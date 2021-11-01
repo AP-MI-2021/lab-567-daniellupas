@@ -64,6 +64,10 @@ def modificaCarte(id, titlu, gen, pret, tip_reducere, lista):
     for carte in lista:
         if getid(carte) == id:
             carteNoua = creeazaCarte(id, titlu, gen, pret, tip_reducere)
+            if getPret(carteNoua) < 0:
+                raise ValueError("Pretul introdus pentru cartea data este negativ")
+            if getTip_reducere(carteNoua) != "Silver" or getTip_reducere(carteNoua) != "Gold" or getTip_reducere(carteNoua) != "None":
+                raise ValueError("Tipul de reducere nu exista")
             listaNoua.append(carteNoua)
         else:
             listaNoua.append(carte)
