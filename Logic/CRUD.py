@@ -57,7 +57,7 @@ def modificaCarte(id, titlu, gen, pret, tip_reducere, lista):
     :return:
     '''
 
-    if getById(id,lista) is None:
+    if getById(id, lista) is None:
         raise ValueError("Cartea pe care doresti sa o modifici nu exista")
     listaNoua = []
 
@@ -66,11 +66,10 @@ def modificaCarte(id, titlu, gen, pret, tip_reducere, lista):
             carteNoua = creeazaCarte(id, titlu, gen, pret, tip_reducere)
             if getPret(carteNoua) < 0:
                 raise ValueError("Pretul introdus pentru cartea data este negativ")
-            if getTip_reducere(carteNoua) != "Silver" or getTip_reducere(carteNoua) != "Gold" or getTip_reducere(carteNoua) != "None":
+            if getTip_reducere(carteNoua) != "Silver" or getTip_reducere(carteNoua) != "Gold" or getTip_reducere(
+                    carteNoua) != "None":
                 raise ValueError("Tipul de reducere nu exista")
             listaNoua.append(carteNoua)
         else:
             listaNoua.append(carte)
     return listaNoua
-
-

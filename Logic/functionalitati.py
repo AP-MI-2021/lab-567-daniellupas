@@ -1,6 +1,7 @@
 from Domain.carte import getPret, getGen_carte, getTitlu_carte, getTip_reducere, creeazaCarte, getid
 
 
+
 def AplicareDiscount(lista):
     '''
     aplicam un discount tuturor cartiilor care sunt din categoria gold sau silver
@@ -33,7 +34,14 @@ def AplicareDiscount(lista):
     return listaNoua
 
 
-def ModificareGen(lista, titlu , gen):
+def ModificareGen(lista, titlu, gen):
+    '''
+    Modificarea genului pentru un titlu dat.
+    :param lista: lista data
+    :param titlu: string
+    :param gen: string
+    :return: lista noua cu informatiile modificate
+    '''
     listaNoua = []
 
 
@@ -54,8 +62,11 @@ def ModificareGen(lista, titlu , gen):
 
 
 def PretMinimPeGen(lista):
-
-    listaNoua=[]
+    '''
+    Determinarea prețului minim pentru fiecare gen.
+    :param lista: o lista care contine cartiile date
+    :return: un dictionar care contine pretul minim pentru fiecare gen
+    '''
 
     rezultat = {}
 
@@ -67,8 +78,51 @@ def PretMinimPeGen(lista):
             rezultat[gen] = carte
         else:
             if pret < getPret(rezultat[gen]):
-                rezultat[gen]= carte
+                rezultat[gen] = carte
 
-    return  rezultat
+    return rezultat
 
 
+def OrdonareDupaPret(lista):
+    '''
+    Ordonarea vânzărilor crescător după preț.
+    :param lista: o lista care contine cartiile date
+    :return: o versiune sortata a listei dupa pret , in ordine crescatoare
+    '''
+    return sorted(lista, key=lambda carte: getPret(carte))
+
+
+def DeterminareCartiCuTitluriDistincte(lista):
+    '''
+    Afișarea numărului de titluri distincte pentru fiecare gen.
+    :param lista: o lista care contine cartiile date
+    :return: un dictionar ce contine informatiile cerute
+    '''
+
+    genuri = {}
+    titluri = {}
+
+    for carte in lista:
+        gen = getGen_carte(carte)
+        titlu = getTitlu_carte(carte)
+        if gen in genuri:
+            if titlu not in titluri:
+                genuri[gen] += 1
+                titluri[titlu] = titlu
+        else:
+            genuri[gen] = 1
+            titluri[titlu] = titlu
+
+    return genuri
+
+
+def undo(lista, undoList, redoList):
+    redoList.append(lista)
+    lista = undoList.pop()
+    return lista, undoList, redoList
+
+
+def redo(lista, undoList, redoList):
+    undoList.append(lista)
+    lista = redoList.pop()
+    return lista, undoList, redoList

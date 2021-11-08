@@ -28,6 +28,7 @@ def testStergeCarte():
     assert getById("1", lista) is None
     assert getById("2", lista) is not None
 
+
 def testModificaCarte():
     lista = []
     lista = adaugaCarte("1", "Test1", "Actiune", 10, "gold", lista)
@@ -48,5 +49,3 @@ def testModificaCarte():
     assert getGen_carte(getById("1", lista)) == "Actiune"
     assert getPret(getById("1", lista)) == 10
     assert getTip_reducere(getById("1", lista)) == "gold"
-
-
