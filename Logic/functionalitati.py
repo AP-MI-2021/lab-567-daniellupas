@@ -116,13 +116,3 @@ def DeterminareCartiCuTitluriDistincte(lista):
     return genuri
 
 
-def undo(lista, undoList, redoList):
-    redoList.append(lista)
-    lista = undoList.pop()
-    return lista, undoList, redoList
-
-
-def redo(lista, undoList, redoList):
-    undoList.append(lista)
-    lista = redoList.pop()
-    return lista, undoList, redoList
